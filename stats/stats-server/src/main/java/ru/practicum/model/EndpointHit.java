@@ -1,8 +1,10 @@
 package ru.practicum.model;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,19 +14,20 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class EndpointHit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
-    private String app;
+    String app;
 
-    private String uri;
+    String uri;
 
-    private String ip;
+    String ip;
 
     @Column(name = "created")
-    private LocalDateTime timestamp;
+    LocalDateTime timestamp;
 
 }

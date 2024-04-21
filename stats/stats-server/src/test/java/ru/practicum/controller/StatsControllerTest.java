@@ -1,7 +1,6 @@
 package ru.practicum.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -47,8 +46,7 @@ class StatsControllerTest {
     private ViewStatsMapper viewStatsMapper;
 
     @Test
-    @SneakyThrows
-    void viewStats() {
+    void viewStats() throws Exception {
         LocalDateTime start = LocalDateTime.of(2024, 1, 1, 1, 1, 1);
         LocalDateTime end = LocalDateTime.of(2024, 1, 3, 1, 1, 1);
         List<String> uris = List.of("uri");
@@ -76,8 +74,7 @@ class StatsControllerTest {
 
 
     @Test
-    @SneakyThrows
-    void viewStatsThrowDateTimeParseException() {
+    void viewStatsThrowDateTimeParseException() throws Exception {
         LocalDateTime start = LocalDateTime.of(2024, 1, 1, 1, 1, 1);
         LocalDateTime end = LocalDateTime.of(2024, 1, 2, 1, 1, 1);
 
@@ -98,8 +95,7 @@ class StatsControllerTest {
     }
 
     @Test
-    @SneakyThrows
-    void viewStatsThrowValidationException() {
+    void viewStatsThrowValidationException() throws Exception {
         LocalDateTime start = LocalDateTime.of(2024, 2, 1, 1, 1, 1);
         LocalDateTime end = LocalDateTime.of(2024, 1, 1, 1, 1, 1);
 
@@ -119,8 +115,7 @@ class StatsControllerTest {
     }
 
     @Test
-    @SneakyThrows
-    void checkHitMethod() {
+    void checkHitMethod() throws Exception {
         EndpointHitDto endpointHitDto = new EndpointHitDto(1L, "app", "/uri/one", "1.1.1.1",
                 LocalDateTime.of(2024, 12, 12, 12, 12, 12));
 
@@ -142,8 +137,7 @@ class StatsControllerTest {
     }
 
     @Test
-    @SneakyThrows
-    void checkMethodHitWithWrongIp() {
+    void checkMethodHitWithWrongIp() throws Exception {
         EndpointHitDto endpointHitDto = new EndpointHitDto(null, "app", "/uri/er", "wrongIp",
                 LocalDateTime.of(2024, 2, 1, 1, 1, 1));
 
