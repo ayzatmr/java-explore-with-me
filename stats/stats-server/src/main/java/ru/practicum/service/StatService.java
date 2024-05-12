@@ -10,4 +10,6 @@ public interface StatService {
     EndpointHitDto hit(EndpointHitDto endpointHitDto);
 
     List<ViewStatsDto> viewStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique);
+
+    ViewStatsDto viewUniqueStatsByUri(String uri);
 }

@@ -38,4 +38,10 @@ public interface StatsRepository extends JpaRepository<EndpointHit, Long> {
             "GROUP BY h.app, h.uri " +
             "ORDER BY COUNT(h.ip) DESC")
     List<ViewStats> findStatsInUrlListWithUniqueIp(LocalDateTime start, LocalDateTime end, List<String> uris);
+
+    @Query("SELECT new ru.practicum.model.ViewStats(eh.app, eh.uri, COUNT(DISTINCT(eh.ip))) " +
+            "FROM EndpointHit eh " +
+            "WHERE eh.uri = ?1 " +
+            "GROUP BY eh.app, eh.uri")
+    ViewStats getUniqueIpStatsByUri(String uri);
 }

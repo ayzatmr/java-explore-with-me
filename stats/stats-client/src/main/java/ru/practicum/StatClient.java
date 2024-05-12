@@ -45,4 +45,15 @@ public class StatClient {
                 .collectList()
                 .block();
     }
+
+    public ViewStatsDto getUniqueIpStatsForUri(String uri) {
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/statistic")
+                        .queryParam("uri", uri)
+                        .build())
+                .retrieve()
+                .bodyToMono(ViewStatsDto.class)
+                .block();
+    }
 }
