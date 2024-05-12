@@ -24,7 +24,6 @@ public class EventUpdateRequest {
     String annotation;
 
     @Positive
-    @NotNull
     @JsonAlias("category")
     Long categoryId;
 
@@ -33,10 +32,8 @@ public class EventUpdateRequest {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ValidStartDate(message = "Event date should be at least 2 hours after current time")
-    @NotNull
     LocalDateTime eventDate;
 
-    @NotNull
     LocationDto location;
 
     Boolean paid;
