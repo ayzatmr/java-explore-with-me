@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleConstraintViolationException(Exception e) {
         log.error(e.getLocalizedMessage());
         return ErrorResponse.builder()
-                .errors(ExceptionUtils.getStackTrace(e))
+                .errors(e.getLocalizedMessage())
                 .message(ExceptionUtils.getMessage(e))
                 .reason("Object already exists")
                 .status(CONFLICT)
@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleNotFoundException(ObjectNotFoundException e) {
         log.error(e.getLocalizedMessage());
         return ErrorResponse.builder()
-                .errors(ExceptionUtils.getStackTrace(e))
+                .errors(e.getLocalizedMessage())
                 .message(ExceptionUtils.getMessage(e))
                 .reason("Object is not found")
                 .status(NOT_FOUND)
@@ -55,7 +55,7 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error(e.getLocalizedMessage());
         return ErrorResponse.builder()
-                .errors(ExceptionUtils.getStackTrace(e))
+                .errors(e.getLocalizedMessage())
                 .message("Field: " + Objects.requireNonNull(e.getFieldError()).getField() +
                         " Error = " + Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage() +
                         " Value: " + e.getFieldError().getRejectedValue())
@@ -69,7 +69,7 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
         log.error(e.getLocalizedMessage());
         return ErrorResponse.builder()
-                .errors(ExceptionUtils.getStackTrace(e))
+                .errors(e.getLocalizedMessage())
                 .message(e.getParameterName() + " is missing.")
                 .reason("Missing request parameter " + e.getParameterName())
                 .status(BAD_REQUEST)
@@ -80,7 +80,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleConversionFailedException(MethodArgumentTypeMismatchException e) {
         return ErrorResponse.builder()
-                .errors(ExceptionUtils.getStackTrace(e))
+                .errors(e.getLocalizedMessage())
                 .message(ExceptionUtils.getMessage(e))
                 .reason("Wrong argument has been passed")
                 .status(BAD_REQUEST)
@@ -92,7 +92,7 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleAllException(Exception e) {
         log.error(e.getLocalizedMessage());
         return ErrorResponse.builder()
-                .errors(ExceptionUtils.getStackTrace(e))
+                .errors(e.getLocalizedMessage())
                 .message(ExceptionUtils.getMessage(e))
                 .reason("Unexpected error")
                 .status(INTERNAL_SERVER_ERROR)
