@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import ru.practicum.common.exception.AlreadyExistException;
 import ru.practicum.common.exception.ObjectNotFoundException;
+import ru.practicum.common.exception.ValidationException;
 import ru.practicum.common.model.ErrorResponse;
 
 import javax.validation.ConstraintViolationException;
@@ -83,6 +84,17 @@ public class GlobalExceptionHandler {
                 .errors(e.getLocalizedMessage())
                 .message(ExceptionUtils.getMessage(e))
                 .reason("Wrong argument has been passed")
+                .status(BAD_REQUEST)
+                .build();
+    }
+
+    @ExceptionHandler(ValidationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleValidationException(ValidationException e) {
+        return ErrorResponse.builder()
+                .errors(e.getLocalizedMessage())
+                .message(ExceptionUtils.getMessage(e))
+                .reason("Validation error occurred")
                 .status(BAD_REQUEST)
                 .build();
     }
