@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import ru.practicum.admin.repository.AdminEventRepository;
 import ru.practicum.admin.repository.CategoryRepository;
 import ru.practicum.common.dto.CategoryDto;
+import ru.practicum.common.exception.AlreadyExistException;
 import ru.practicum.common.exception.ObjectNotFoundException;
-import ru.practicum.common.exception.ValidationException;
 import ru.practicum.common.mapper.CategoryMapper;
 import ru.practicum.common.model.Category;
 
@@ -48,7 +48,7 @@ public class CategoryServiceImpl implements CategoryService {
     private void validateCategory(Long catId) {
         long events = adminEventRepository.countEventsByCategoryId(catId);
         if (events > 0) {
-            throw new ValidationException("Category has attached events");
+            throw new AlreadyExistException("Category has attached events");
         }
     }
 }

@@ -12,7 +12,6 @@ import ru.practicum.common.enums.EventState;
 import ru.practicum.common.enums.StateAction;
 import ru.practicum.common.exception.AlreadyExistException;
 import ru.practicum.common.exception.ObjectNotFoundException;
-import ru.practicum.common.exception.ValidationException;
 import ru.practicum.common.mapper.EventMapper;
 import ru.practicum.common.model.Constants;
 import ru.practicum.common.model.Event;
@@ -77,7 +76,7 @@ public class AdminEventServiceImpl implements AdminEventService {
 
     private void validateCancelled(Event event) {
         if (event.getState().equals(EventState.CANCELED)) {
-            throw new ValidationException("Can not publish cancelled event");
+            throw new AlreadyExistException("Can not publish cancelled event");
         }
     }
 

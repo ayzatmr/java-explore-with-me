@@ -145,7 +145,7 @@ public class UserEventServiceImpl implements UserEventService {
         User user = getUser(userId);
         Event event = getEventById(eventId);
         if (event.getInitiator().getId().equals(userId)) {
-            throw new ValidationException("It is not allowed not make request to your own event");
+            throw new AlreadyExistException("It is not allowed not make request to your own event");
         }
         userRequestsRepository
                 .findByRequesterIdAndEventId(userId, eventId)
@@ -153,7 +153,7 @@ public class UserEventServiceImpl implements UserEventService {
                     throw new AlreadyExistException("User request is already exists");
                 });
         if (!event.getState().equals(EventState.PUBLISHED)) {
-            throw new ValidationException("Event is not published");
+            throw new AlreadyExistException("Event is not published");
         }
         UserRequest userRequest = createParticipantRequest(user, event);
         return userRequestMapper.toDto(userRequestsRepository.save(userRequest));
@@ -251,7 +251,7 @@ public class UserEventServiceImpl implements UserEventService {
                 .event(event)
                 .build();
         if (event.getConfirmedRequests() == event.getParticipantLimit() && event.getParticipantLimit() != 0) {
-            throw new ValidationException("Participant limit is exceeded");
+            throw new AlreadyExistException("Participant limit is exceeded");
         }
         if (event.getParticipantLimit() == 0 || !event.isRequestModeration()) {
             userRequest.setStatus(EventRequestStatus.CONFIRMED);

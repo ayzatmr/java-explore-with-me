@@ -36,7 +36,7 @@ public class AdminCompilationServiceImpl implements AdminCompilationService {
         List<Event> compilationEvents = getCompilationEvents(newCompilationDto, compilationEventIds);
         Compilation compilation = Compilation.builder()
                 .title(newCompilationDto.getTitle())
-                .pinned(newCompilationDto.getPinned())
+                .pinned(newCompilationDto.isPinned())
                 .events(compilationEvents)
                 .build();
         return compilationMapper.toDto(compilationRepository.save(compilation));
