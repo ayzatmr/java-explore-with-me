@@ -41,9 +41,7 @@ public class StatServiceImpl implements StatService {
     @Override
     public ViewStatsDto viewUniqueStatsByUri(String uri) {
         return viewStatsMapper.toDto(statsRepository.getUniqueIpStatsByUri(uri));
-
     }
-
 
     private List<ViewStats> getAllStats(LocalDateTime start, LocalDateTime end, List<String> uris) {
         if (uris == null) {
