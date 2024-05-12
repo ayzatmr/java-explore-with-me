@@ -17,6 +17,7 @@ import ru.practicum.common.exception.ValidationException;
 import ru.practicum.common.mapper.EventMapper;
 import ru.practicum.common.mapper.UserRequestMapper;
 import ru.practicum.common.model.Category;
+import ru.practicum.common.model.Constants;
 import ru.practicum.common.model.Event;
 import ru.practicum.common.pagination.CustomPageRequest;
 import ru.practicum.user.dto.EventRequestStatusUpdateDto;
@@ -85,7 +86,7 @@ public class UserEventServiceImpl implements UserEventService {
     @Override
     public List<EventShortDto> findAllEvents(Long userId, int from, int size) {
         getUser(userId);
-        Pageable pageRequest = CustomPageRequest.of(from, size, null);
+        Pageable pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING);
         return eventMapper.toShortDtoList(userEventRepository.findByInitiatorId(userId, pageRequest));
     }
 
