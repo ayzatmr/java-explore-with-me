@@ -36,7 +36,7 @@ public class AdminEventServiceImpl implements AdminEventService {
 
     @Override
     public List<EventFullDto> getFullEventByAdmin(AdminEventSearchFilter searchFilter, int from, int size) {
-        CustomPageRequest pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING);
+        CustomPageRequest pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING_DESC);
         List<Specification<Event>> specifications = eventAdminSearchFilterToSpecifications(searchFilter);
         List<Event> events = adminEventRepository.findAll(specifications
                         .stream()

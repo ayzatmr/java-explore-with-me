@@ -86,7 +86,7 @@ public class UserEventServiceImpl implements UserEventService {
     @Override
     public List<EventShortDto> findAllEvents(Long userId, int from, int size) {
         getUser(userId);
-        Pageable pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING);
+        Pageable pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING_DESC);
         return eventMapper.toShortDtoList(userEventRepository.findByInitiatorId(userId, pageRequest));
     }
 

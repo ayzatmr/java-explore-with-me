@@ -2,13 +2,13 @@ package ru.practicum.admin.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.practicum.admin.dto.NewUserDto;
 import ru.practicum.admin.dto.UserDto;
 import ru.practicum.admin.repository.UserRepository;
 import ru.practicum.common.exception.ObjectNotFoundException;
 import ru.practicum.common.mapper.UserMapper;
-import ru.practicum.common.model.Constants;
 import ru.practicum.common.pagination.CustomPageRequest;
 import ru.practicum.user.models.User;
 
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> findAll(List<Long> ids, int from, int size) {
-        Pageable pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING);
+        Pageable pageRequest = CustomPageRequest.of(from, size, Sort.by(Sort.Direction.ASC, "id"));
         List<User> users = userRepository.findByIdsIn(ids, pageRequest);
         return userMapper.toDtoList(users);
     }

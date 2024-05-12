@@ -22,7 +22,7 @@ public class PublicCategoryServiceImpl implements PublicCategoryService {
 
     @Override
     public List<CategoryDto> findAll(int from, int size) {
-        Pageable pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING);
+        Pageable pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING_DESC);
         List<Category> categories = publicCategoryRepository.findAll(pageRequest).toList();
         return categoryMapper.toDtoList(categories);
     }

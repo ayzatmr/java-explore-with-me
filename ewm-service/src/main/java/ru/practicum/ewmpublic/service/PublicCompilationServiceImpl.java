@@ -24,7 +24,7 @@ public class PublicCompilationServiceImpl implements PublicCompilationService {
 
     @Override
     public List<CompilationDto> findCompilations(Boolean pinned, int from, int size) {
-        CustomPageRequest pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING);
+        CustomPageRequest pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING_DESC);
         return compilationMapper.toDtoList(compilationRepository.findAllWithPinned(pinned, pageRequest));
     }
 
