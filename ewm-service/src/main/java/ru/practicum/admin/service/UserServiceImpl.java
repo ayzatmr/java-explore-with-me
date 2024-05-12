@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> findAll(List<Long> ids, int from, int size) {
         Pageable pageRequest = CustomPageRequest.of(from, size, Constants.ID_SORTING);
-        List<User> users = userRepository.findByIdIn(ids, pageRequest);
+        List<User> users = userRepository.findByIdsIn(ids, pageRequest);
         return userMapper.toDtoList(users);
     }
 

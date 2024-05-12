@@ -67,7 +67,7 @@ public class UserEventServiceImpl implements UserEventService {
         }
 
         if (event.getConfirmedRequests() == participantLimit) {
-            throw new ValidationException("The participant limit has been reached");
+            throw new AlreadyExistException("The participant limit has been reached");
         }
         return participantLimit;
     }
@@ -103,7 +103,7 @@ public class UserEventServiceImpl implements UserEventService {
         Event eventToUpdate = getUserEvent(eventId, userId);
 
         if (eventToUpdate.getState().equals(EventState.PUBLISHED)) {
-            throw new ValidationException("Event can not be modified");
+            throw new AlreadyExistException("Event can not be modified");
         }
         changeEventState(eventDto, eventToUpdate);
         eventMapper.updateEvent(eventDto, eventToUpdate);

@@ -10,6 +10,7 @@ import ru.practicum.common.dto.EventFullDto;
 import ru.practicum.common.dto.EventUpdateRequest;
 import ru.practicum.common.enums.EventState;
 import ru.practicum.common.enums.StateAction;
+import ru.practicum.common.exception.AlreadyExistException;
 import ru.practicum.common.exception.ObjectNotFoundException;
 import ru.practicum.common.exception.ValidationException;
 import ru.practicum.common.mapper.EventMapper;
@@ -82,7 +83,7 @@ public class AdminEventServiceImpl implements AdminEventService {
 
     private void validatePublished(Event event) {
         if (event.getState().equals(EventState.PUBLISHED)) {
-            throw new ValidationException("Event is already published");
+            throw new AlreadyExistException("Event is already published");
         }
     }
 

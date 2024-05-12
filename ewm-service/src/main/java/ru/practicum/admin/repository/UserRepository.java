@@ -7,7 +7,9 @@ import ru.practicum.user.models.User;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    default List<User> findByIdIn(List<Long> ids, Pageable pageable) {
+    List<User> findByIdIn(List<Long> id, Pageable pageable);
+
+    default List<User> findByIdsIn(List<Long> ids, Pageable pageable) {
         if (ids == null) {
             return findAll(pageable).getContent();
         } else {
