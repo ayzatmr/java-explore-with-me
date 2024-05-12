@@ -143,7 +143,7 @@ public class UserEventServiceImpl implements UserEventService {
     @Override
     public UserRequestDto addUserRequestToEvent(Long userId, Long eventId) {
         User user = getUser(userId);
-        Event event = getUserEvent(eventId, userId);
+        Event event = getEventById(eventId);
         if (event.getInitiator().getId().equals(userId)) {
             throw new ValidationException("It is not allowed not make request to your own event");
         }
@@ -223,6 +223,11 @@ public class UserEventServiceImpl implements UserEventService {
 
     private Event getUserEvent(Long eventId, Long userId) {
         return userEventRepository.findByEventIdAndInitiatorId(eventId, userId)
+                .orElseThrow(() -> new ObjectNotFoundException("Event is not found"));
+    }
+
+    private Event getEventById(Long eventId) {
+        return userEventRepository.getEventById(eventId)
                 .orElseThrow(() -> new ObjectNotFoundException("Event is not found"));
     }
 

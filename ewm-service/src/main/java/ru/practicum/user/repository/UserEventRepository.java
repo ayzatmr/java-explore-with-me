@@ -25,4 +25,10 @@ public interface UserEventRepository extends JpaRepository<Event, Long> {
             "WHERE i.id = :initiatorId")
     List<Event> findByInitiatorId(@Param("initiatorId") Long initiatorId,
                                   Pageable pageable);
+
+    @Query("SELECT e FROM Event e " +
+            "JOIN FETCH e.category c " +
+            "JOIN FETCH e.initiator i " +
+            "WHERE e.id = ?1")
+    Optional<Event> getEventById(Long eventId);
 }
