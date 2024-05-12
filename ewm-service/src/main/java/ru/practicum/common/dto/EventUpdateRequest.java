@@ -7,7 +7,6 @@ import lombok.experimental.FieldDefaults;
 import ru.practicum.common.enums.StateAction;
 import ru.practicum.common.validation.ValidStartDate;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
