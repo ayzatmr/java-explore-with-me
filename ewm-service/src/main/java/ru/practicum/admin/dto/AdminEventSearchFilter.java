@@ -8,6 +8,8 @@ import ru.practicum.common.enums.EventState;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static ru.practicum.common.model.Constants.DATE_TIME_FORMAT;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,10 +23,10 @@ public class AdminEventSearchFilter {
 
     List<Long> categories;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = DATE_TIME_FORMAT)
     LocalDateTime rangeStart;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = DATE_TIME_FORMAT)
     LocalDateTime rangeEnd;
 
     boolean onlyAvailable;

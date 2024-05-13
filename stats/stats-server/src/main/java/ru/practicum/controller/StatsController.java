@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static ru.practicum.common.Constants.DATE_FORMAT;
+import static ru.practicum.common.Constants.DATE_TIME_FORMATTER;
 
 @RestController
 @RequiredArgsConstructor
@@ -48,7 +48,7 @@ public class StatsController {
 
     private LocalDateTime decode(String dateTime) {
         String decodedDateTime = URLDecoder.decode(dateTime, StandardCharsets.UTF_8);
-        return LocalDateTime.parse(decodedDateTime, DATE_FORMAT);
+        return LocalDateTime.parse(decodedDateTime, DATE_TIME_FORMATTER);
     }
 
 }

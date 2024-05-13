@@ -13,6 +13,8 @@ import ru.practicum.common.validation.ValidStartDate;
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
+import static ru.practicum.common.model.Constants.DATE_TIME_FORMAT;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,7 +33,7 @@ public class NewEventDto {
     @NotBlank
     String description;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_TIME_FORMAT)
     @NotNull
     @ValidStartDate(message = "Event date should be at least 2 hours after current time")
     LocalDateTime eventDate;

@@ -7,6 +7,8 @@ import ru.practicum.common.enums.EventState;
 
 import java.time.LocalDateTime;
 
+import static ru.practicum.common.model.Constants.DATE_TIME_FORMAT;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +21,7 @@ public class EventFullDto {
 
     CategoryDto category;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_TIME_FORMAT)
     LocalDateTime eventDate;
 
     UserShortDto initiator;
@@ -40,10 +42,10 @@ public class EventFullDto {
 
     EventState state;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_TIME_FORMAT)
     LocalDateTime createdOn;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_TIME_FORMAT)
     LocalDateTime publishedOn;
 
     LocationDto location;

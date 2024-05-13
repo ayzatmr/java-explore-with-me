@@ -7,6 +7,8 @@ import ru.practicum.common.enums.EventRequestStatus;
 
 import java.time.LocalDateTime;
 
+import static ru.practicum.common.model.Constants.DATE_TIME_FORMAT;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +16,7 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserRequestDto {
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = DATE_TIME_FORMAT)
     LocalDateTime created;
 
     Long event;

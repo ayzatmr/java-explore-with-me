@@ -28,7 +28,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static ru.practicum.common.Constants.DATE_FORMAT;
+import static ru.practicum.common.Constants.DATE_TIME_FORMATTER;
 
 @WebMvcTest(controllers = StatsController.class)
 class StatsControllerTest {
@@ -58,8 +58,8 @@ class StatsControllerTest {
                 .thenReturn(List.of(viewStatsDto));
 
         mvc.perform(get("/stats")
-                        .param("start", start.format(DATE_FORMAT))
-                        .param("end", end.format(DATE_FORMAT))
+                        .param("start", start.format(DATE_TIME_FORMATTER))
+                        .param("end", end.format(DATE_TIME_FORMATTER))
                         .params(new LinkedMultiValueMap<>(Map.of("uris", List.of("uri"))))
                         .param("unique", unique.toString()))
                 .andExpect(status().isOk())
@@ -105,8 +105,8 @@ class StatsControllerTest {
                 .thenReturn(List.of(viewStats));
 
         mvc.perform(get("/stats")
-                        .param("start", start.format(DATE_FORMAT))
-                        .param("end", end.format(DATE_FORMAT)))
+                        .param("start", start.format(DATE_TIME_FORMATTER))
+                        .param("end", end.format(DATE_TIME_FORMATTER)))
                 .andExpect(status().isBadRequest())
                 .andExpect(result -> assertInstanceOf(ValidationException.class, result.getResolvedException()));
 
@@ -131,7 +131,7 @@ class StatsControllerTest {
                 .andExpect(jsonPath("$.app", is(endpointHitDto.getApp())))
                 .andExpect(jsonPath("$.uri", is(endpointHitDto.getUri())))
                 .andExpect(jsonPath("$.ip", is(endpointHitDto.getIp())))
-                .andExpect(jsonPath("$.timestamp", is(endpointHitDto.getTimestamp().format(DATE_FORMAT))));
+                .andExpect(jsonPath("$.timestamp", is(endpointHitDto.getTimestamp().format(DATE_TIME_FORMATTER))));
 
         verify(statService, times(1)).hit(endpointHitDto);
     }
