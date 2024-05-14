@@ -20,13 +20,8 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class WebConfig {
 
-    @Value("${server.timeout}")
-    public int timeout;
-    @Value("${server.url}")
-    private String url;
-
     @Bean
-    public WebClient webClient() {
+    public WebClient webClient(@Value("${stats-server.url}") String url, @Value("${stats-server.timeout}") int timeout) {
         final var tcpClient = TcpClient
                 .create()
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout)

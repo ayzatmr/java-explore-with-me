@@ -20,7 +20,7 @@ public class StatClient {
     private final WebClient webClient;
 
     public EndpointHitDto hitDto(EndpointHitDto endpointHitDto) {
-        String uri = "/hits";
+        String uri = "/hit";
         return webClient
                 .post()
                 .uri(uri)
@@ -43,6 +43,17 @@ public class StatClient {
                 .bodyToFlux(ViewStatsDto.class)
                 .retryWhen(Retry.fixedDelay(3, Duration.ofMillis(100)))
                 .collectList()
+                .block();
+    }
+
+    public ViewStatsDto getUniqueIpStatsForUri(String uri) {
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/statistic")
+                        .queryParam("uri", uri)
+                        .build())
+                .retrieve()
+                .bodyToMono(ViewStatsDto.class)
                 .block();
     }
 }
