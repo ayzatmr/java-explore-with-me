@@ -3,8 +3,10 @@ package ru.practicum.common.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import ru.practicum.user.dto.CommentDto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static ru.practicum.common.model.Constants.DATE_TIME_FORMAT;
 
@@ -32,4 +34,6 @@ public class EventShortDto {
     long confirmedRequests;
 
     long views;
+
+    List<CommentDto> comments;
 }

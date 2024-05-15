@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import ru.practicum.common.enums.EventState;
+import ru.practicum.user.dto.CommentDto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static ru.practicum.common.model.Constants.DATE_TIME_FORMAT;
 
@@ -50,4 +52,5 @@ public class EventFullDto {
 
     LocationDto location;
 
+    List<CommentDto> comments;
 }
