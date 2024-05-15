@@ -17,7 +17,7 @@ public class CommentsController {
 
     private final CommentServiceImpl commentService;
 
-    @PostMapping("/{eventId}/comment/{userId}")
+    @PostMapping("/{eventId}/comments/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
     public EventFullDto addCommentToEvent(@PathVariable Long userId,
                                           @PathVariable Long eventId,
@@ -25,14 +25,14 @@ public class CommentsController {
         return commentService.addCommentToEvent(userId, eventId, addCommentDto);
     }
 
-    @PatchMapping("/{eventId}/comment/{userId}")
+    @PatchMapping("/{eventId}/comments/{userId}")
     public EventFullDto updateComment(@PathVariable Long userId,
                                       @PathVariable Long eventId,
                                       @RequestBody @Valid UpdateCommentDto updateCommentDto) {
         return commentService.updateComment(userId, eventId, updateCommentDto);
     }
 
-    @DeleteMapping("/{userId}/comment/{commentId}")
+    @DeleteMapping("/{userId}/comments/{commentId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteComment(@PathVariable Long userId,
                               @PathVariable Long commentId) {

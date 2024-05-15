@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "e41b9bea-64fb-4cef-bd69-8979cb11e39d",
+    "_postman_id": "ea1f30ab-c9b8-4121-8b07-24ec70cab511",
     "name": "Explore With Me - Comments",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "34930054"
@@ -124,14 +124,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/events/:eventId/comment/:userId",
+          "raw": "{{baseUrl}}/events/:eventId/comments/:userId",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
             ":eventId",
-            "comment",
+            "comments",
             ":userId"
           ],
           "variable": [
@@ -255,14 +255,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/events/:eventId/comment/:userId",
+          "raw": "{{baseUrl}}/events/:eventId/comments/:userId",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
             ":eventId",
-            "comment",
+            "comments",
             ":userId"
           ],
           "variable": [
@@ -356,14 +356,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/events/:eventId/comment/:userId",
+          "raw": "{{baseUrl}}/events/:eventId/comments/:userId",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
             ":eventId",
-            "comment",
+            "comments",
             ":userId"
           ],
           "variable": [
@@ -441,14 +441,14 @@
           }
         ],
         "url": {
-          "raw": "{{baseUrl}}/events/:userId/comment/:commentId",
+          "raw": "{{baseUrl}}/events/:userId/comments/:commentId",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
             ":userId",
-            "comment",
+            "comments",
             ":commentId"
           ],
           "variable": [
@@ -524,14 +524,14 @@
           }
         ],
         "url": {
-          "raw": "{{baseUrl}}/events/:userId/comment/:commentId",
+          "raw": "{{baseUrl}}/events/:userId/comments/:commentId",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
             ":userId",
-            "comment",
+            "comments",
             ":commentId"
           ],
           "variable": [
@@ -630,14 +630,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/events/:eventId/comment/:userId",
+          "raw": "{{baseUrl}}/events/:eventId/comments/:userId",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
             ":eventId",
-            "comment",
+            "comments",
             ":userId"
           ],
           "variable": [
@@ -738,14 +738,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/events/:eventId/comment/:userId",
+          "raw": "{{baseUrl}}/events/:eventId/comments/:userId",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
             ":eventId",
-            "comment",
+            "comments",
             ":userId"
           ],
           "variable": [
@@ -832,14 +832,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/events/:eventId/comment/:userId",
+          "raw": "{{baseUrl}}/events/:eventId/comments/:userId",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
             ":eventId",
-            "comment",
+            "comments",
             ":userId"
           ],
           "variable": [
@@ -926,14 +926,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/events/:eventId/comment/:userId",
+          "raw": "{{baseUrl}}/events/:eventId/comments/:userId",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
             ":eventId",
-            "comment",
+            "comments",
             ":userId"
           ],
           "variable": [
@@ -974,7 +974,7 @@
           "    }\r",
           "\r",
           "    async addComment(userId, eventId, comment, verbose=null) {\r",
-          "        return this.post(\"/events/\" + eventId + \"/comment/\" + userId, comment, \"Ошибка при добавлении нового комментария: \", verbose)\r",
+          "        return this.post(\"/events/\" + eventId + \"/comments/\" + userId, comment, \"Ошибка при добавлении нового комментария: \", verbose)\r",
           "    }\r",
           "\r",
           "    async addEvent(userId, event, verbose=null) {\r",

@@ -1,9 +1,7 @@
 package ru.practicum.user.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,13 +12,14 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UpdateCommentDto {
 
     @NotNull
     @Positive
-    private Long commentId;
+    Long commentId;
 
     @NotBlank
     @Size(min = 1, max = 2000)
-    private String text;
+    String text;
 }

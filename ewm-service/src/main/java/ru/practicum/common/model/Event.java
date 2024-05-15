@@ -34,7 +34,7 @@ public class Event {
     @OneToMany
     @JoinColumn(name = "event_id")
     @ToString.Exclude
-    private final List<Comment> comments = new ArrayList<>();
+    final List<Comment> comments = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
