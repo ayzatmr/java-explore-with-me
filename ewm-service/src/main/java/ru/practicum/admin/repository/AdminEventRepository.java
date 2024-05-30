@@ -12,6 +12,8 @@ public interface AdminEventRepository extends JpaRepository<Event, Long>, JpaSpe
     @Query("SELECT e FROM Event e " +
             "JOIN FETCH e.category c " +
             "JOIN FETCH e.initiator i " +
+            "JOIN FETCH  e.location " +
+            "LEFT JOIN FETCH e.comments " +
             "WHERE e.id = ?1")
     Optional<Event> findFullEventById(Long eventId);
 

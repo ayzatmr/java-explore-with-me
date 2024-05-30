@@ -1,12 +1,11 @@
-package ru.practicum.common.dto;
+package ru.practicum.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.user.dto.CommentDto;
+import ru.practicum.common.dto.UserShortDto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import static ru.practicum.common.model.Constants.DATE_TIME_FORMAT;
 
@@ -15,25 +14,14 @@ import static ru.practicum.common.model.Constants.DATE_TIME_FORMAT;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class EventShortDto {
+public class CommentDto {
+
     Long id;
 
-    String annotation;
+    String text;
 
-    CategoryDto category;
+    UserShortDto author;
 
     @JsonFormat(pattern = DATE_TIME_FORMAT)
-    LocalDateTime eventDate;
-
-    UserShortDto initiator;
-
-    Boolean paid;
-
-    String title;
-
-    long confirmedRequests;
-
-    long views;
-
-    List<CommentDto> comments;
+    LocalDateTime postedOn;
 }

@@ -31,6 +31,11 @@ public class Event {
     @ToString.Exclude
     final List<Compilation> compilations = new ArrayList<>();
 
+    @OneToMany
+    @JoinColumn(name = "event_id")
+    @ToString.Exclude
+    final List<Comment> comments = new ArrayList<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -87,5 +92,9 @@ public class Event {
 
     public void addToCompilation(Compilation compilation) {
         compilations.add(compilation);
+    }
+
+    public void addCommentToEvent(Comment comment) {
+        comments.add(comment);
     }
 }
